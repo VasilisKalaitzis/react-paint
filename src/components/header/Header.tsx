@@ -1,3 +1,4 @@
+import React from 'react';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { TOP_BAR_HEIGHT } from '../../constants/App';
 

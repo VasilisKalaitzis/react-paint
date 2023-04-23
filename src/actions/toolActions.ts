@@ -9,8 +9,7 @@ interface ChangeActiveTool {
 
 export type ToolAction = ChangeActiveTool;
   
-  export const changeActiveTool = (tool: AvailableTools) => ({
-    type: ToolActionTypes.CHANGE_ACTIVE_TOOL,
-    payload: tool,
-  });
-  
+export const changeActiveTool = (tool: AvailableTools) => ({
+  type: ToolActionTypes.CHANGE_ACTIVE_TOOL,
+  payload: tool,
+});
