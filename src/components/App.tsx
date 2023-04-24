@@ -12,7 +12,6 @@ const MainBody = styled(Grid)({
   flexGrow: 1,
   marginTop: `${TOP_BAR_HEIGHT}px`,
   boxSizing: 'border-box',
-  backgroundColor: grey[100],
 });
 
 const App: React.FC = () => {
@@ -20,10 +19,10 @@ const App: React.FC = () => {
     <>
       <Header/>
       <MainBody container>
-        <Grid height="100%" item xs={10} sm={11}>
+        <Grid height="100%" item xs={6} sm={8} md={9} lg={10} xl={11} padding="16px" sx={{backgroundColor: grey[100]}}>
           <Canvas/>
         </Grid>
-        <Grid height="100%" item xs={2} sm={1}>
+        <Grid height="100%" item xs={6} sm={4} md={3} lg={2} xl={1}>
           <Toolbox/>
         </Grid>
       </MainBody>

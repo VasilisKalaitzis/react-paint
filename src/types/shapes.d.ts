@@ -2,6 +2,7 @@ declare interface Shape {
     type: AvailableTools;
     startPoint: { x: number, y: number};
     endPoint: { x: number, y: number};
+    properties: ToolProperties;
   };
 
   declare interface LineShape extends Shape {

@@ -8,8 +8,8 @@ import { draw } from './utils';
 const Canvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dispatch = useDispatch();
-  const shapeList = useSelector<RootState, Shape[]>((state) => state.shapes.shapeList);
-  const selectedTool = useSelector<RootState, AvailableTools>((state) => state.tools.activeTool);
+  const { shapeList } = useSelector<RootState, ShapeState>((state) => state.shapes);
+  const { activeTool, properties } = useSelector<RootState, ToolState>((state) => state.tools);
   const [drawingShape, setDrawingShape] = useState<ShapeModification | undefined>(undefined);
 
   const adjustCanvasAndDraw = () => {
@@ -32,9 +32,10 @@ const Canvas = () => {
   const handleMouseDown = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = event.nativeEvent;
     const shape = {
-      type: selectedTool,
+      type: activeTool,
       startPoint: { x: offsetX, y: offsetY },
       endPoint: { x: offsetX, y: offsetY },
+      properties
     };
     createShape(shape);
     setDrawingShape({ shape, index: shapeList.length});
