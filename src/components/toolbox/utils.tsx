@@ -10,7 +10,7 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         r: 0, 
                         g: 0, 
                         b: 0, 
-                        a: 0,
+                        a: 1,
                     },
                 },
                 lineWidth: {
@@ -29,7 +29,7 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         r: 0, 
                         g: 0, 
                         b: 0, 
-                        a: 0,
+                        a: 1,
                     },
                 },
                 fillColor: {
@@ -40,7 +40,7 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         r: 0, 
                         g: 0, 
                         b: 0, 
-                        a: 1 
+                        a: 0 
                     },
                 },
             };
@@ -54,7 +54,7 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         r: 0, 
                         g: 0, 
                         b: 0, 
-                        a: 0,
+                        a: 1,
                     },
                 },
                 fillColor: {
@@ -65,7 +65,7 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         r: 0, 
                         g: 0, 
                         b: 0, 
-                        a: 1 
+                        a: 0 
                     },
                 },
             };
