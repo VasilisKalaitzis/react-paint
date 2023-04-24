@@ -12,15 +12,7 @@ const Canvas = () => {
   const { activeTool, properties } = useSelector<RootState, ToolState>((state) => state.tools);
   const [drawingShape, setDrawingShape] = useState<ShapeModification | undefined>(undefined);
 
-  const canvasDrawCallback = () => {
-    if (canvasRef?.current) {
-      adjustCanvasAndDraw(canvasRef.current, shapeList);
-      // add highlight on the selected element if exists
-      if (selectedShapeIndex !== undefined && canvasRef.current) {
-        drawSelectionHighlight(canvasRef.current, shapeList[selectedShapeIndex]);
-      }
-    }
-  };
+  const canvasDrawCallback = () => canvasRef?.current && adjustCanvasAndDraw(canvasRef.current, shapeList);
 
   useEffect(() => {
     dispatch(selectShapeByIndex(undefined));
@@ -35,11 +27,14 @@ const Canvas = () => {
 
   useEffect(() => {
     canvasDrawCallback();
-    window.addEventListener('resize', canvasDrawCallback);
-    return () => {
-      window.removeEventListener('resize', canvasDrawCallback);
-    };
   }, [shapeList]);
+
+  useEffect(() => {
+    // add highlight on the selected element if exists
+    if (canvasRef?.current && selectedShapeIndex !== undefined) {
+        drawSelectionHighlight(canvasRef.current, shapeList[selectedShapeIndex]);
+    }
+  }, [shapeList, selectedShapeIndex]);
 
   const handleMouseDown = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = event.nativeEvent;
@@ -81,8 +76,10 @@ const Canvas = () => {
       }
     };
     window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', canvasDrawCallback);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', canvasDrawCallback);
     };
   }, []);
 
