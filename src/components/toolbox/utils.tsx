@@ -1,5 +1,5 @@
 export const getDefaultToolProperties = (type: AvailableTools) => {
-    let properties;
+    let properties = {};
     switch (type) {
         case 'line':
             properties = {

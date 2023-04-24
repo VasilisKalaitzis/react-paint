@@ -16,7 +16,8 @@ function ToolButton(props: MyButtonProps) {
   const styles = {
     backgroundColor: selected ? grey[300] : 'transparent',
     color: grey[800],
-    padding: '16px',
+    padding: '14px',
+    minWidth: '60px',
     borderRadius: 0,
     '&:hover': {
       backgroundColor: selected ? grey[300] : grey[200],

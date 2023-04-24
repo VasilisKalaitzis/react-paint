@@ -13,10 +13,8 @@ const ToolProperties = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (activeTool !== 'select') {
-            const properties = getDefaultToolProperties(activeTool);
-            dispatch(setToolProperties(properties));
-        }
+        const properties = getDefaultToolProperties(activeTool);
+        dispatch(setToolProperties(properties));
     }, [activeTool]);
 
     const convertColorResultToColorFormat = (colorResult: ColorResult): ColorFormat => {
