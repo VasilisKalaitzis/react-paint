@@ -1,6 +1,8 @@
 export enum ShapeActionTypes {
   CREATE_SHAPE = 'CREATE_SHAPE',
   MODIFY_SHAPE = 'MODIFY_SHAPE',
+  SELECT_SHAPE_BY_INDEX = 'SELECT_SHAPE_BY_INDEX',
+  DELETE_SHAPE = 'DELETE_SHAPE',
 }
 
 interface CreateShapeAction {
@@ -13,7 +15,17 @@ interface ModifyShapeAction {
   payload: ShapeModification;
 }
 
-export type ShapeAction = CreateShapeAction | ModifyShapeAction;
+interface SelectShapeByIndexAction {
+  type: ShapeActionTypes.SELECT_SHAPE_BY_INDEX;
+  payload: number | undefined;
+}
+
+interface DeleteShapeAction {
+  type: ShapeActionTypes.DELETE_SHAPE;
+  payload: number | undefined;
+}
+
+export type ShapeAction = CreateShapeAction | ModifyShapeAction | SelectShapeByIndexAction | DeleteShapeAction;
 
 const getCircleData = (circle: Shape) => {
   const {startPoint, endPoint } = circle;
@@ -63,5 +75,19 @@ export const modifyShape = (index: number, shape: Shape) => {
   return {
     type: ShapeActionTypes.MODIFY_SHAPE,
     payload
+  }
+}
+
+export const selectShapeByIndex = (index: number | undefined) => {
+  return {
+    type: ShapeActionTypes.SELECT_SHAPE_BY_INDEX,
+    payload: index
+  }
+}
+
+export const deleteShape = (index: number | undefined) => {
+  return {
+    type: ShapeActionTypes.DELETE_SHAPE,
+    payload: index
   }
 }

@@ -17,7 +17,7 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                     label: 'width',
                     type: 'number',
                     value: '2',
-                },
+                }
             };
             break;
         case 'circle':
@@ -43,6 +43,11 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         a: 0 
                     },
                 },
+                lineWidth: {
+                    label: 'width',
+                    type: 'number',
+                    value: '2',
+                },
             };
             break;
         case 'ellipse':
@@ -67,6 +72,11 @@ export const getDefaultToolProperties = (type: AvailableTools) => {
                         b: 0, 
                         a: 0 
                     },
+                },
+                lineWidth: {
+                    label: 'width',
+                    type: 'number',
+                    value: '2',
                 },
             };
         break;

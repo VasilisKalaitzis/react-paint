@@ -1,7 +1,12 @@
+declare interface Point {
+  x: number;
+  y: number;
+}
+
 declare interface Shape {
     type: AvailableTools;
-    startPoint: { x: number, y: number};
-    endPoint: { x: number, y: number};
+    startPoint: Point;
+    endPoint: Point;
     properties: ToolProperties;
   };
 
@@ -22,8 +27,10 @@ declare interface Shape {
   
   declare interface ShapeState {
     shapeList: Shape[];
+    selectedShapeIndex?: number;
   };
   
   declare interface ShapeModification {
-    index:number, shape: Shape 
+    index:number;
+    shape: Shape;
   };

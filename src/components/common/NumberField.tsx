@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Button, InputAdornment, styled } from "@mui/material";
 import { grey } from '@mui/material/colors';
 
@@ -18,6 +18,10 @@ const IncreamentButton = styled(Button)({
 
 const NumberField = ({ value, min, onChange }: NumberFieldProps) => {
   const [inputValue, setInputValue] = useState(value);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
